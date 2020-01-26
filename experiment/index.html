@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/graph.ob.js"></script>
+    <script src="js/graph_line_use.ob.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/javascript.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Measure High Resistance by Leakage Method</title>
+</head>
+
+<body>
+    <div style="text-align: center;">X : <span id="mouseX"
+            style="border: 1px solid black; padding: 5px 20px; display: inline-block;">0</span> Y: <span id="mouseY"
+            style="border: 1px solid black; padding: 5px 20px; display: inline-block;">0</span>
+    </div>
+    <h2 class="text-center" id="header-nav">Measure High Resistance by Leakage Method</h2>
+    <div class="container-fluid mt-4">
+        <div class="row" style="justify-content: left;">
+            <div class="col-md-2 col-xl-2">
+                <div class="row">
+                    <!-- <div class="col mt-2">
+                        <button vlab-action="MAKE_CONNECTION" class="btn btn-primary">Connection</button>
+                    </div> -->
+                    <div class="col mt-2">
+                        <button vlab-action="RESET" class="btn btn-danger stopped">Reset</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="STOP_SIMULATION" class="btn btn-warning stopped">Power Off</button>
+                    </div>
+                    <div class="col mt-2">
+                        <button vlab-action="START_SIMULATION" class="btn btn-success stopped">Power On</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="UNDO" class="btn btn-secondary stopped">Undo</button>
+                    </div>
+                    <div class="col mt-2">
+                        <button vlab-action="REDO" class="btn btn-secondary stopped">Redo</button>
+                    </div>
+                </div>
+                <div class="row mt-4" style="height: max-content;">
+                    <div class="col pl-0 pr-0"
+                        style="border: 0px inset green; box-shadow: 0px 0px 20px #bbb; background-color: white;">
+                        <h4 class="text-center mb-0"
+                            style="background-color: black; color: white; box-shadow: 0px 3px 20px #bbb">Message</h4>
+                        <div id="terminal">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col-md-8 col-xl-8 p-0" style="border: 0px inset green; box-shadow: 0px 0px 20px #bbb; height: 730px;">
+                <canvas id="myCanvas" style="background-image: url(images/back.svg); background-size: 100px 100px;">
+
+                </canvas>
+                <div id="l1" style="width:300px;height:300px; position: absolute; top:0 ; right: 0;"></div>
+                <div id="dataTable">
+
+                </div>
+            </div>
+
+            <div class="col-md-2 col-xl-2">
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="START_CHARGING" id="charging" class="btn btn-success started disabled"
+                            disabled>Start Capacitor Charging</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="READ_DEFLACTION" id="read" class="btn btn-success started disabled"
+                            disabled>Read Deflation</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="START_DISCHARGING" id="discharging"
+                            class="btn btn-success started disabled" disabled>Start Discharging Capacitor</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button vlab-action="START_DISCHARGING" id="discharge" class="btn btn-success started disabled"
+                            disabled>Discharge Capacitor</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <button class="btn btn-success" id="draw-graph">Draw Graph</button>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <div style="background-color: white; box-shadow: 0px 0px 10px #bbb;" class="p-3 mt-3">
+                            <h3 class="text-center"><b>Formulas :</b></h3>
+                            Capacitor Charging :
+                            <img src="images/char.png"><br>
+                            Capacitor Discharging :
+                            <img src="images/dis.png"><br>
+                            High Resistance :
+                            <img src="images/resist.png"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 content-center">
+            <div class="col-md-2">
+                m = <input type="text" id="slop">
+            </div>
+            <div class="col-md-2">
+                R = <input type="text" id="final-R">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" id="varify">Varify</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loader">
+        <div style=" position: absolute; top: 42%; left: 48.5%; transform: translate(-50%,-50%);">
+            <i class='layer'></i>
+            <i class='layer'></i>
+            <i class='layer'></i>
+        </div>
+        <div style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-20%);">Loading....
+        </div>
+    </div>
+</body>
+
+</html>
