@@ -20,11 +20,13 @@ body {
     padding: 12px;
     box-shadow: 0px 0px 10px #bbb;
 }
-input{
+
+input {
     padding: 4px 20px;
     letter-spacing: 2px;
 }
-.content-center{
+
+.content-center {
     justify-content: center;
 }
 
@@ -37,13 +39,84 @@ input{
     opacity: .6;
 }
 
+#canvas-container {
+    width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
 #myCanvas {
     background-color: white;
+    background-image: url(/experiment/images/back.svg);
+    background-size: 50px 50px;
+}
+
+.container {
+    margin: 0 auto;
+    vertical-align: top;
+    box-sizing: border-box;
+    /* height: 500px; */
+    width: max-content;
+    margin-bottom: 60px;
+}
+
+.container>div {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0px 2px;
+    vertical-align: top;
+}
+
+.container>div h4 {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 1px 5px #bbb;
+    box-sizing: border-box;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0;
+    margin: 0;
+}
+#l1{
+    margin: 0 auto;
+}
+.row{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 3px auto;
+}
+.col{
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+.item{
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 5px;
+    width: 80px;
+    height: 80px;
+    background: white;
+}
+button{
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.disabled{
+    opacity: .6;
+    cursor: not-allowed;
 }
 
 #terminal {
     background: rgba(48, 10, 36, 1);
-    height: 356px;
+    height: 260px;
+    width: 280px;
     word-wrap: normal;
     color: white;
     font-family: terminalFont;
@@ -52,6 +125,7 @@ input{
     font-size: 12px;
     word-spacing: 3px;
     font-weight: 1;
+    margin: 0;
     -webkit-user-select: text;
     /* Safari 3.1+ */
     -moz-user-select: text;
@@ -61,7 +135,9 @@ input{
     user-select: text;
     /* Standard syntax */
     cursor: text;
-    width: 100%;
+}
+h6{
+    margin: 0;
 }
 
 #terminal::-webkit-scrollbar {
@@ -69,12 +145,14 @@ input{
 }
 
 /* Track */
+
 #terminal::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
 }
 
 /* Handle */
+
 #terminal::-webkit-scrollbar-thumb {
     background: gray;
     border-radius: 10px;
@@ -82,6 +160,7 @@ input{
 }
 
 /* Handle on hover */
+
 #terminal::-webkit-scrollbar-thumb:hover {
     background: white;
 }
@@ -96,7 +175,6 @@ input{
     z-index: 1;
     display: block;
 }
-
 
 .layer {
     display: block;
@@ -136,23 +214,19 @@ input{
 
 @font-face {
     font-family: 'digitalFont';
-    src: url('font/digital-7.ttf');
+    src: url('/experiment/css/font/digital-7.ttf');
 }
 
 @font-face {
     font-family: 'terminalFont';
-    src: url('font/Tifax-AJ7g.ttf');
+    src: url('/experiment/css/font/Tifax-AJ7g.ttf');
 }
 
 @-webkit-keyframes moveup {
-
-    0%,
-    60%,
-    100% {
+    0%, 60%, 100% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
     }
-
     25% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(1em);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(1em);
@@ -160,14 +234,10 @@ input{
 }
 
 @keyframes moveup {
-
-    0%,
-    60%,
-    100% {
+    0%, 60%, 100% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
     }
-
     25% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(1em);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(1em);
@@ -175,14 +245,10 @@ input{
 }
 
 @-webkit-keyframes movedown {
-
-    0%,
-    60%,
-    100% {
+    0%, 60%, 100% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
     }
-
     25% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(-1em);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(-1em);
@@ -190,14 +256,10 @@ input{
 }
 
 @keyframes movedown {
-
-    0%,
-    60%,
-    100% {
+    0%, 60%, 100% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(0);
     }
-
     25% {
         -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(-1em);
         transform: rotateX(50deg) rotateY(0deg) rotateZ(45deg) translateZ(-1em);
@@ -205,10 +267,7 @@ input{
 }
 
 #dataTable {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
+    display: block;
     background-color: white;
     box-shadow: 0px -1px 10px #bbb;
 }
@@ -218,9 +277,7 @@ table {
     background-color: white;
 }
 
-tr,
-td,
-th {
+tr, td, th {
     text-align: center;
     border: 1px solid #bbb;
     border-collapse: collapse;
@@ -233,4 +290,15 @@ th {
 td input {
     width: 100%;
     text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+.started{
+    display: none;
+}
+select{
+    padding: 5px 20px;
+    cursor: pointer;
 }

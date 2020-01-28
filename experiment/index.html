@@ -1,141 +1,117 @@
 <html>
 
 <head>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/graph.ob.js"></script>
     <script src="js/graph_line_use.ob.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/javascript.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Measure High Resistance by Leakage Method</title>
+    <title>Measurement of Numerical Aperture of Optical Fiber</title>
 </head>
 
 <body>
-    <div style="text-align: center;">X : <span id="mouseX"
-            style="border: 1px solid black; padding: 5px 20px; display: inline-block;">0</span> Y: <span id="mouseY"
-            style="border: 1px solid black; padding: 5px 20px; display: inline-block;">0</span>
-    </div>
-    <h2 class="text-center" id="header-nav">Measure High Resistance by Leakage Method</h2>
-    <div class="container-fluid mt-4">
-        <div class="row" style="justify-content: left;">
-            <div class="col-md-2 col-xl-2">
-                <div class="row">
-                    <!-- <div class="col mt-2">
-                        <button vlab-action="MAKE_CONNECTION" class="btn btn-primary">Connection</button>
-                    </div> -->
-                    <div class="col mt-2">
-                        <button vlab-action="RESET" class="btn btn-danger stopped">Reset</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="STOP_SIMULATION" class="btn btn-warning stopped">Power Off</button>
-                    </div>
-                    <div class="col mt-2">
-                        <button vlab-action="START_SIMULATION" class="btn btn-success stopped">Power On</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="UNDO" class="btn btn-secondary stopped">Undo</button>
-                    </div>
-                    <div class="col mt-2">
-                        <button vlab-action="REDO" class="btn btn-secondary stopped">Redo</button>
-                    </div>
-                </div>
-                <div class="row mt-4" style="height: max-content;">
-                    <div class="col pl-0 pr-0"
-                        style="border: 0px inset green; box-shadow: 0px 0px 20px #bbb; background-color: white;">
-                        <h4 class="text-center mb-0"
-                            style="background-color: black; color: white; box-shadow: 0px 3px 20px #bbb">Message</h4>
-                        <div id="terminal">
+    <!-- <div style="text-align: center;">
+        X : <span id="mouseX" style="border:
+                1px solid black; padding: 5px 20px; display:
+                inline-block;">0</span>
+        Y: <span id="mouseY" style="border: 1px
+                solid black; padding: 5px 20px; display:
+                inline-block;">0</span>
+    </div> -->
+    <h2 class="text-center" id="header-nav">Measurement of Numerical Aperture of Optical Fiber</h2>
 
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="components">
+                    <div class="row">
+                        <div class="item col btn" vlab-action="DRAW_EMITTER">
+                            <img id="emit" vlab-action="DRAW_EMITTER" src="/experiment/images/emitt.svg" width="100%"
+                                height="100%">
+                            <h6 vlab-action="DRAW_EMITTER">Emitter</h6>
+                        </div>
+                        <div class="item col btn" vlab-action="DRAW_FIBRE_STAND">
+                            <img id="stand" vlab-action="DRAW_FIBRE_STAND" src="/experiment/images/stand.svg"
+                                width="100%" height="100%">
+                            <h6 vlab-action="DRAW_FIBRE_STAND">Fibre Stand</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="item col btn" vlab-action="DRAW_FIBRE_CABLE">
+                            <img id="wire" vlab-action="DRAW_FIBRE_CABLE" src="/experiment/images/wire.svg" width="100%"
+                                height="100%">
+                            <h6 vlab-action="DRAW_FIBRE_CABLE">Fibre Cable</h6>
+                        </div>
+                        <div class="item col btn" vlab-action="DRAW_SCREEN">
+                            <img vlab-action="DRAW_SCREEN" id="screen" src="/experiment/images/screen1.svg" width="100%"
+                                height="100%">
+                            <h6 vlab-action="DRAW_SCREEN">Output screen</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row started">
+                    <div class="row">
+                        <span>Select Cable :</span>
+                        <select id="cableType">
+                            <option value="fibre">Fibre Cable</option>
+                            <option value="glass">Glass Cable</option>
+                        </select>
+                    </div>
+                    <div class="rangeButton">
+                        <div class="row">
+                            <input id="distance" type="range" min="0" max="20"><span id="rbValue"></span>
+                            <h5>Distance of Screen (L) in mm</h5>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-
+                    <div class="col">
+                        <button class="btn" vlab-action="RESET">Reset</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn" vlab-action="START_SIMULATION" id="start">Start</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-8 col-xl-8 p-0" style="border: 0px inset green; box-shadow: 0px 0px 20px #bbb; height: 730px;">
-                <canvas id="myCanvas" style="background-image: url(images/back.svg); background-size: 100px 100px;">
-
-                </canvas>
-                <div id="l1" style="width:300px;height:300px; position: absolute; top:0 ; right: 0;"></div>
-                <div id="dataTable">
-
-                </div>
-            </div>
-
-            <div class="col-md-2 col-xl-2">
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="START_CHARGING" id="charging" class="btn btn-success started disabled"
-                            disabled>Start Capacitor Charging</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="READ_DEFLACTION" id="read" class="btn btn-success started disabled"
-                            disabled>Read Deflation</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="START_DISCHARGING" id="discharging"
-                            class="btn btn-success started disabled" disabled>Start Discharging Capacitor</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button vlab-action="START_DISCHARGING" id="discharge" class="btn btn-success started disabled"
-                            disabled>Discharge Capacitor</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <button class="btn btn-success" id="draw-graph">Draw Graph</button>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mt-2">
-                        <div style="background-color: white; box-shadow: 0px 0px 10px #bbb;" class="p-3 mt-3">
-                            <h3 class="text-center"><b>Formulas :</b></h3>
-                            Capacitor Charging :
-                            <img src="images/char.png"><br>
-                            Capacitor Discharging :
-                            <img src="images/dis.png"><br>
-                            High Resistance :
-                            <img src="images/resist.png"><br>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <h4 class="text-center">Message</h4>
+                <div id="terminal"> </div>
             </div>
         </div>
-
-        <div class="row mt-3 content-center">
-            <div class="col-md-2">
-                m = <input type="text" id="slop">
+        <div id="canvas-container">
+            <canvas id="myCanvas"></canvas>
+        </div>
+        <div id="dataTable"> </div>
+        <br>
+        <div class="row">
+            <button onclick="drawGraph(this)" style="width: 200px;">Draw Graph</button>
+            <div id="l1" style="width:300px;height:300px;"></div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col">
+                Final Numerical Aperture : <input id="answer" type="text">
             </div>
-            <div class="col-md-2">
-                R = <input type="text" id="final-R">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-primary" id="varify">Varify</button>
+            <div class="col">
+                <button onclick="varify(this)">Varify</button>
             </div>
         </div>
     </div>
-    
+    <img id="frontscreen" src="/experiment/images/screen2.svg" style="display: none;" width="100%" height="100%">
+    <img id="snap" src="/experiment/images/snap.png" style="display: none;" width="100%" height="100%">
+
+    <img id="blue" src="/experiment/images/blue.svg" style="display: none;" width="100%" height="100%">
+    <img id="red" src="/experiment/images/red.svg" style="display: none;" width="100%" height="100%">
+    <img id="green" src="/experiment/images/green.svg" style="display: none;" width="100%" height="100%">
     <div class="loader">
-        <div style=" position: absolute; top: 42%; left: 48.5%; transform: translate(-50%,-50%);">
+        <div style="position: absolute; top: 42%; left: 48.5%; transform:
+                translate(-50%,-50%);">
             <i class='layer'></i>
             <i class='layer'></i>
             <i class='layer'></i>
         </div>
-        <div style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-20%);">Loading....
+        <div style="color: white; position: absolute; top: 50%; left: 50%;
+                transform: translate(-50%,-20%);">Loading....
         </div>
     </div>
 </body>
