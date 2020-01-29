@@ -285,7 +285,7 @@ window.onload = function () {
     this.cmpy = 290;
     this.cpx = 220;
     this.simulator = new Simulator();
-    simulator.cable = new Cable(simulator.canvas, this.cpx, cmpy + 10, 300, 6, "Cable", "Cable");
+    simulator.cable = new Cable(simulator.canvas, this.cpx+15, cmpy + 10, 270, 6, "Cable", "Cable");
     simulator.cable.NA = simulator.cable.NAList.fibre;
     simulator.stand1 = new Item(simulator.canvas, this.cpx, cmpy, 20, 100, "stand1", "stand");
     simulator.stand2 = new Item(simulator.canvas, this.cpx + 280, cmpy, 20, 100, "stand2", "stand");
@@ -413,5 +413,6 @@ function varify(e) {
     }
     var perError = (simulator.cable.NA - answer) / simulator.cable.NA;
     perError = perError.toFixed(2);
-    terminal.update("Percentage Error = " + perError);
+    terminal.update("Percentage Error = " + (perError *100) +"%");
+    alert("Percentage Error = " + (perError *100) +"%");
 }

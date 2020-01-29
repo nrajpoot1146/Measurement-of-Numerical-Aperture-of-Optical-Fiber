@@ -23,16 +23,18 @@
     <div class="container">
         <div>
             <div class="row">
-                <div class="components">
+                <div class="components" style="background-color: #bbb;">
+                    <div class="row">
+                        <h4>Tools</h4>
+                    </div>
                     <div class="row">
                         <div class="item col btn" vlab-action="DRAW_EMITTER">
-                            <img id="emit" vlab-action="DRAW_EMITTER" src="images/emitt.svg" width="100%"
-                                height="100%">
+                            <img id="emit" vlab-action="DRAW_EMITTER" src="images/emitt.svg" width="100%" height="100%">
                             <h6 vlab-action="DRAW_EMITTER">Emitter</h6>
                         </div>
                         <div class="item col btn" vlab-action="DRAW_FIBRE_STAND">
-                            <img id="stand" vlab-action="DRAW_FIBRE_STAND" src="images/stand.svg"
-                                width="100%" height="100%">
+                            <img id="stand" vlab-action="DRAW_FIBRE_STAND" src="images/stand.svg" width="100%"
+                                height="100%">
                             <h6 vlab-action="DRAW_FIBRE_STAND">Fibre Stand</h6>
                         </div>
                     </div>
@@ -49,18 +51,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="row started">
-                    <div class="row">
-                        <span>Select Cable :</span>
-                        <select id="cableType">
-                            <option value="fibre">Fibre Cable</option>
-                            <option value="glass">Glass Cable</option>
-                        </select>
-                    </div>
-                    <div class="rangeButton">
-                        <div class="row">
-                            <input id="distance" type="range" min="0" max="20"><span id="rbValue"></span>
-                            <h5>Distance of Screen (L) in mm</h5>
+                <div class="row">
+                    <div class="started">
+                        <div>
+                            <span>Select Cable :</span>
+                            <select id="cableType">
+                                <option value="fibre">Fibre Cable</option>
+                                <option value="glass">Glass Cable</option>
+                            </select>
+                        </div>
+                        <div class="rangeButton">
+                            <div class="row">
+                                <input id="distance" type="range" min="0" max="20"><span id="rbValue"></span>
+                                <h5>Distance of Screen (L) in mm</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,12 +85,14 @@
         <div id="canvas-container">
             <canvas id="myCanvas"></canvas>
         </div>
-        <div id="dataTable"> </div>
-        <br>
         <div class="row">
-            <button onclick="drawGraph(this)" style="width: 200px;">Draw Graph</button>
-            <div id="l1" style="width:300px;height:300px;"></div>
-            <br>
+            <div class="col">
+                <div id="dataTable"> </div>
+            </div>
+            <div class="col">
+                <button onclick="drawGraph(this)" style="width: 200px;">Draw Graph</button>
+                <div id="l1" style="width:300px;height:250px;"></div>
+            </div>
         </div>
         <div class="row">
             <div class="col">

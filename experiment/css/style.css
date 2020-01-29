@@ -48,7 +48,7 @@ input {
 
 #myCanvas {
     background-color: white;
-    background-image: url(/experiment/images/back.svg);
+    background-image: url(../images/back.svg);
     background-size: 50px 50px;
 }
 
@@ -82,7 +82,7 @@ input {
     margin: 0 auto;
 }
 .row{
-    display: block;
+    display: block !important;
     width: 100%;
     text-align: center;
     margin: 3px auto;
@@ -281,6 +281,7 @@ tr, td, th {
     text-align: center;
     border: 1px solid #bbb;
     border-collapse: collapse;
+    padding: 0;
 }
 
 th {
@@ -290,6 +291,7 @@ th {
 td input {
     width: 100%;
     text-align: center;
+    margin: 0;
 }
 
 .text-center {
