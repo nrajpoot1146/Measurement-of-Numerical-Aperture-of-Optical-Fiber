@@ -11,3 +11,4 @@ HTML and CSS for UI
 ## Basic Functionality Video
 https://github.com/user-attachments/assets/5ac8b1bc-3d04-4312-bee0-f3d84ede0e10
 
+![Recording2024-08-24114659_2-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4f63add9-058c-47d0-97d2-ba503c49e738)
